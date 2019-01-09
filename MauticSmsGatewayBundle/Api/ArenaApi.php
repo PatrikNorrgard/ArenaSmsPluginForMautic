@@ -1,15 +1,15 @@
 <?php
 
-namespace MauticPlugin\MauticSmsGateawayBundle\Api;
+namespace MauticPlugin\MauticSmsGatewayBundle\Api;
 
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Mautic\CoreBundle\Helper\UserHelper;
-use MauticPlugin\MauticSmsGateawayBundle\Entity\SmsGateawaySettings;
+use MauticPlugin\MauticSmsGatewayBundle\Entity\SmsGatewaySettings;
 use Mautic\PageBundle\Model\TrackableModel;
 use Mautic\PluginBundle\Helper\IntegrationHelper;
 use \Mautic\SmsBundle\Api\AbstractSmsApi;
-use MauticPlugin\MauticSmsGateawayBundle\Entity\Interfaces\ApiInterface;
-use MauticPlugin\MauticSmsGateawayBundle\Entity\Traits\ApiTrait;
+use MauticPlugin\MauticSmsGatewayBundle\Entity\Interfaces\ApiInterface;
+use MauticPlugin\MauticSmsGatewayBundle\Entity\Traits\ApiTrait;
 use Monolog\Logger;
 
 class ArenaApi extends AbstractSmsApi {
@@ -53,7 +53,7 @@ class ArenaApi extends AbstractSmsApi {
 		$this->params['phones'][] = $number;
 		$this->params['messages'] = $content;
 		// Getting provider entity
-		/** @var SmsGateawaySettings $provider */
+		/** @var SmsGatewaySettings $provider */
 		$provider = $this->getCurrentProvider();
 
 		$credentials = $this->prepareData( $provider, $this->params['messages'] );
@@ -101,7 +101,7 @@ class ArenaApi extends AbstractSmsApi {
 		}
 
 		return $this->doctrine
-			->getRepository( SmsGateawaySettings::class )
+			->getRepository( SmsGatewaySettings::class )
 			->findOneBy( [
 				'provider'    => $this->params['provider'],
 				'userId'      => $this->params['user_id'],
@@ -110,12 +110,12 @@ class ArenaApi extends AbstractSmsApi {
 	}
 
 	/**
-	 * @param SmsGateawaySettings $provider
+	 * @param SmsGatewaySettings $provider
 	 * @param $text
 	 *
 	 * @return array
 	 */
-	public function prepareData( SmsGateawaySettings $provider, $text ) {
+	public function prepareData( SmsGatewaySettings $provider, $text ) {
 		switch ( $provider->getProvider() ) {
 			case ApiInterface::AIMO_NAME:
 				$credentials = [
@@ -142,7 +142,7 @@ class ArenaApi extends AbstractSmsApi {
 		return $credentials;
 	}
 
-	public function getBaseUrl( SmsGateawaySettings $provider ) {
+	public function getBaseUrl( SmsGatewaySettings $provider ) {
 		switch ( strtolower( $provider->getProvider() ) ) {
 			case ApiInterface::AIMO_NAME:
 				return ApiInterface::AIMO_BASE_URL;

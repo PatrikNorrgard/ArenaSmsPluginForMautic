@@ -6,7 +6,7 @@
  * Time: 17:57
  */
 
-namespace MauticPlugin\MauticSmsGateawayBundle;
+namespace MauticPlugin\MauticSmsGatewayBundle;
 
 use Doctrine\DBAL\Schema\Schema;
 use Doctrine\ORM\EntityManager;
@@ -14,7 +14,7 @@ use Mautic\CoreBundle\Factory\MauticFactory;
 use Mautic\PluginBundle\Bundle\PluginBundleBase;
 use Mautic\PluginBundle\Entity\Plugin;
 
-class MauticSmsGateawayBundle extends PluginBundleBase
+class MauticSmsGatewayBundle extends PluginBundleBase
 {
     public static function onPluginInstall(Plugin $plugin, MauticFactory $factory, $metadata = null, $installedSchema = null)
     {
@@ -63,7 +63,7 @@ class MauticSmsGateawayBundle extends PluginBundleBase
 
         /** @var \Doctrine\ORM\Mapping\ClassMetadata $meta */
         foreach ($allMetadata as $meta) {
-            if (strpos($meta->namespace, 'MauticPlugin\\MauticSmsGateawayBundle') === false) {
+            if (strpos($meta->namespace, 'MauticPlugin\\MauticSmsGatewayBundle') === false) {
                 continue;
             }
 

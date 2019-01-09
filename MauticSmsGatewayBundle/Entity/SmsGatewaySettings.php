@@ -1,12 +1,12 @@
 <?php
 
-namespace MauticPlugin\MauticSmsGateawayBundle\Entity;
+namespace MauticPlugin\MauticSmsGatewayBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Mautic\CoreBundle\Doctrine\Mapping\ClassMetadataBuilder;
-use MauticPlugin\MauticSmsGateawayBundle\Entity\Interfaces\SmsGateawaySettingsInterface;
+use MauticPlugin\MauticSmsGatewayBundle\Entity\Interfaces\SmsGatewaySettingsInterface;
 
-class SmsGateawaySettings implements SmsGateawaySettingsInterface
+class SmsGatewaySettings implements SmsGatewaySettingsInterface
 {
     /**
      * @ORM\Id
@@ -65,7 +65,7 @@ class SmsGateawaySettings implements SmsGateawaySettingsInterface
     {
         $builder = new ClassMetadataBuilder($metadata);
         $builder
-            ->setTable('plugin_smsgateaway_settings')
+            ->setTable('plugin_smsgateway_settings')
             ->addIndex(['user_id'], 'user_id')
             ->addIndex(['username'], 'username')
             ->addIndex(['client_id'], 'client_id');

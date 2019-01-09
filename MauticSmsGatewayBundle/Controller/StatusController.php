@@ -1,14 +1,14 @@
 <?php
 
-namespace MauticPlugin\MauticSmsGateawayBundle\Controller;
+namespace MauticPlugin\MauticSmsGatewayBundle\Controller;
 
 
 use Mautic\CoreBundle\Controller\CommonController;
-use MauticPlugin\MauticSmsGateawayBundle\Entity\SmsGateawaySettings;
-use MauticPlugin\MauticSmsGateawayBundle\Entity\SmsGateawayStatus;
-use MauticPlugin\MauticSmsGateawayBundle\Entity\Interfaces\ApiInterface;
-use MauticPlugin\MauticSmsGateawayBundle\Entity\Traits\ApiTrait;
-use MauticPlugin\MauticSmsGateawayBundle\Form\Type\UpdateStatusesType;
+use MauticPlugin\MauticSmsGatewayBundle\Entity\SmsGatewaySettings;
+use MauticPlugin\MauticSmsGatewayBundle\Entity\SmsGatewayStatus;
+use MauticPlugin\MauticSmsGatewayBundle\Entity\Interfaces\ApiInterface;
+use MauticPlugin\MauticSmsGatewayBundle\Entity\Traits\ApiTrait;
+use MauticPlugin\MauticSmsGatewayBundle\Form\Type\UpdateStatusesType;
 use Symfony\Component\HttpFoundation\Request;
 
 class StatusController extends CommonController
@@ -18,13 +18,13 @@ class StatusController extends CommonController
     public function indexAction()
     {
         $form = $this->createForm(UpdateStatusesType::class, null, [
-            'action' => $this->generateUrl('plugin_smsgateaway_statuses_update'),
+            'action' => $this->generateUrl('plugin_smsgateway_statuses_update'),
             'method' => Request::METHOD_POST,
             'userId' => $this->getUser()->getId(),
         ]);
 
         return $this->delegateView([
-            'contentTemplate' => 'MauticSmsGateawayBundle:Status:index.html.php',
+            'contentTemplate' => 'MauticSmsGatewayBundle:Status:index.html.php',
             'viewParameters' => [
                 'form' => $form->createView(),
             ],
@@ -37,7 +37,7 @@ class StatusController extends CommonController
         $tickets = $this->getStatusEntities($ticketIds);
 
         $provider = $this->getDoctrine()
-            ->getRepository(SmsGateawaySettings::class)
+            ->getRepository(SmsGatewaySettings::class)
             ->findOneBy([
                 'userId' => $this->getUser()->getId(),
                 'provider' => ApiInterface::AIMO_NAME,
@@ -56,15 +56,15 @@ class StatusController extends CommonController
         $entityManager->flush();
 
         return $this->postActionRedirect([
-            'returnUrl'       => $this->generateUrl('plugin_smsgateaway_statuses'),
-            'contentTemplate' => 'MauticSmsGateawayBundle:Status:index',
+            'returnUrl'       => $this->generateUrl('plugin_smsgateway_statuses'),
+            'contentTemplate' => 'MauticSmsGatewayBundle:Status:index',
         ]);
     }
 
     private function getStatusEntities($ticketIds)
     {
         return $this->getDoctrine()
-            ->getRepository(SmsGateawayStatus::class)
+            ->getRepository(SmsGatewayStatus::class)
             ->findBy([
                 'userId' => $this->getUser()->getId(),
                 'ticketId' => $ticketIds,

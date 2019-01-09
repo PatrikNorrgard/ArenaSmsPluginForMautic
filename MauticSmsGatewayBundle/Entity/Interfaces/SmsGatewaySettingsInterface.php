@@ -1,9 +1,9 @@
 <?php
 
-namespace MauticPlugin\MauticSmsGateawayBundle\Entity\Interfaces;
+namespace MauticPlugin\MauticSmsGatewayBundle\Entity\Interfaces;
 
 
-interface SmsGateawaySettingsInterface extends SmsGateawayInterface
+interface SmsGatewaySettingsInterface extends SmsGatewayInterface
 {
     /** Getters */
 

@@ -1,5 +1,5 @@
 <?php $view->extend('MauticCoreBundle:Default:content.html.php'); ?>
-<?php $view['slots']->set('headerTitle', $view['translator']->trans('plugin.smsgateaway.statuses.index.title')); ?>
+<?php $view['slots']->set('headerTitle', $view['translator']->trans('plugin.smsgateway.statuses.index.title')); ?>
 
 <div class="container">
     <div class="row">
@@ -17,10 +17,10 @@
                 <thead>
                     <td>#</td>
                     <td><a href="#" id="select-all">Select all</a> | <a href="#" id="deselect">Deselect</a></td>
-                    <td><?php echo $view['translator']->trans('plugin.smsgateaway.statuses.index.table.phone'); ?></td>
-                    <td><?php echo $view['translator']->trans('plugin.smsgateaway.statuses.index.table.id'); ?></td>
-                    <td><?php echo $view['translator']->trans('plugin.smsgateaway.statuses.index.table.status'); ?></td>
-                    <td><?php echo $view['translator']->trans('plugin.smsgateaway.statuses.index.table.delivery_date'); ?></td>
+                    <td><?php echo $view['translator']->trans('plugin.smsgateway.statuses.index.table.phone'); ?></td>
+                    <td><?php echo $view['translator']->trans('plugin.smsgateway.statuses.index.table.id'); ?></td>
+                    <td><?php echo $view['translator']->trans('plugin.smsgateway.statuses.index.table.status'); ?></td>
+                    <td><?php echo $view['translator']->trans('plugin.smsgateway.statuses.index.table.delivery_date'); ?></td>
                 </thead>
                 <tbody>
                     <?php $iterator = 1; ?>

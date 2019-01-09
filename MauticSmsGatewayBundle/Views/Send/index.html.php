@@ -1,5 +1,5 @@
 <?php $view->extend('MauticCoreBundle:Default:content.html.php'); ?>
-<?php $view['slots']->set('headerTitle', $view['translator']->trans('plugin.smsgateaway.send.index.title')); ?>
+<?php $view['slots']->set('headerTitle', $view['translator']->trans('plugin.smsgateway.send.index.title')); ?>
 <div class="container">
     <div class="row">
         <div class="col-sm-12">
@@ -13,9 +13,9 @@
             <?php echo $view['form']->start($form); ?>
             <?php echo $view['form']->row($form['message']); ?>
             <ul id="counter" class="list-unstyled">
-                <li><?php echo $view['translator']->trans('plugin.smsgateaway.send.index.form.counter.entered'); ?>: <span id="chars-entered">0</span></li>
-                <li><?php echo $view['translator']->trans('plugin.smsgateaway.send.index.form.counter.left'); ?>: <span id="chars-left">0</span></li>
-                <li><?php echo $view['translator']->trans('plugin.smsgateaway.send.index.form.counter.messages'); ?>: <span id="messages-count">0</span></li>
+                <li><?php echo $view['translator']->trans('plugin.smsgateway.send.index.form.counter.entered'); ?>: <span id="chars-entered">0</span></li>
+                <li><?php echo $view['translator']->trans('plugin.smsgateway.send.index.form.counter.left'); ?>: <span id="chars-left">0</span></li>
+                <li><?php echo $view['translator']->trans('plugin.smsgateway.send.index.form.counter.messages'); ?>: <span id="messages-count">0</span></li>
             </ul>
             <table class="table table-striped table-responsive">
                 <thead>
@@ -48,7 +48,7 @@
         </div>
     </div>
 </div>
-<script src="/plugins/MauticSmsGateawayBundle/Assets/js/jquery.smscharcount.js"></script>
+<script src="/plugins/MauticSmsGatewayBundle/Assets/js/jquery.smscharcount.js"></script>
 <script>
     jQuery(function($){
         $('textarea#send_sms_message').smsCharCount({
@@ -80,7 +80,7 @@
             var message = $('textarea#send_sms_message');
 
             if (message.val() == '' || message.val() == null) {
-                alert("<?php echo $view['translator']->trans('plugin.smsgateaway.send.index.form.alert.empty_message'); ?>");
+                alert("<?php echo $view['translator']->trans('plugin.smsgateway.send.index.form.alert.empty_message'); ?>");
                 return false;
             }
 
@@ -91,7 +91,7 @@
             var recepients = $(('input[type="checkbox"]:checked'));
             
             if (recepients.length === 0) {
-                alert("<?php echo $view['translator']->trans('plugin.smsgateaway.send.index.form.alert.empty_recipients'); ?>");
+                alert("<?php echo $view['translator']->trans('plugin.smsgateway.send.index.form.alert.empty_recipients'); ?>");
                 return false;
             }
 

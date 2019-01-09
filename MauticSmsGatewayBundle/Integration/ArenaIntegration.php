@@ -1,11 +1,11 @@
 <?php
 
-namespace MauticPlugin\MauticSmsGateawayBundle\Integration;
+namespace MauticPlugin\MauticSmsGatewayBundle\Integration;
 
 
 use Mautic\PluginBundle\Integration\AbstractIntegration;
-use MauticPlugin\MauticSmsGateawayBundle\Entity\SmsGateawaySettings;
-use MauticPlugin\MauticSmsGateawayBundle\Entity\Interfaces\ApiInterface;
+use MauticPlugin\MauticSmsGatewayBundle\Entity\SmsGatewaySettings;
+use MauticPlugin\MauticSmsGatewayBundle\Entity\Interfaces\ApiInterface;
 
 class ArenaIntegration extends AbstractIntegration
 {
@@ -30,7 +30,7 @@ class ArenaIntegration extends AbstractIntegration
      */
     public function getIcon()
     {
-        return 'plugins/MauticSmsGateawayBundle/Assets/img/arena.png';
+        return 'plugins/MauticSmsGatewayBundle/Assets/img/arena.png';
     }
 
     /**
@@ -53,7 +53,7 @@ class ArenaIntegration extends AbstractIntegration
     {
         $userId = $this->factory->get('mautic.helper.user')->getUser()->getId();
         $endpoints = $this->em
-            ->getRepository(SmsGateawaySettings::class)
+            ->getRepository(SmsGatewaySettings::class)
             ->createQueryBuilder('c')
             ->select('c.callbackUrl')
             ->where("c.userId = $userId")
@@ -70,7 +70,7 @@ class ArenaIntegration extends AbstractIntegration
         if ($formArea == 'features') {
             $builder->add('provider', 'choice',
                 [
-                    'label' => 'plugin.smsgateaway.create.form.field.label.provider',
+                    'label' => 'plugin.smsgateway.create.form.field.label.provider',
                     'label_attr' => ['class' => 'control-label'],
                     'attr' => [
                         'class' => 'form-control',
@@ -80,19 +80,19 @@ class ArenaIntegration extends AbstractIntegration
                         ApiInterface::ENGINE_NAME => ucfirst(ApiInterface::ENGINE_NAME),
                     ],
                     'required' => true,
-                    'empty_value' => 'plugin.smsgateaway.create.form.field.option.provider.default',
+                    'empty_value' => 'plugin.smsgateway.create.form.field.option.provider.default',
                 ]
             );
             $builder->add('callback_url', 'choice',
                 [
-                    'label' => 'plugin.smsgateaway.create.form.field.label.callback_url',
+                    'label' => 'plugin.smsgateway.create.form.field.label.callback_url',
                     'label_attr' => ['class' => 'control-label'],
                     'attr' => [
                         'class' => 'form-control',
                     ],
                     'required' => false,
                     'choices' => $endpoints,
-                    'empty_value' => 'plugin.smsgateaway.create.form.field.option.endpoint.default',
+                    'empty_value' => 'plugin.smsgateway.create.form.field.option.endpoint.default',
                 ]
             );
             $builder->add('user_id', 'hidden',

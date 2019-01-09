@@ -1,5 +1,5 @@
 <?php $view->extend('MauticCoreBundle:Default:content.html.php'); ?>
-<?php $view['slots']->set('headerTitle', $view['translator']->trans('plugin.smsgateaway.show.provider_show.title') . ucfirst($entity->getProvider())); ?>
+<?php $view['slots']->set('headerTitle', $view['translator']->trans('plugin.smsgateway.show.provider_show.title') . ucfirst($entity->getProvider())); ?>
 <div class="container">
     <div class="row">
         <div class="col-sm-12">
@@ -35,9 +35,9 @@
                     </div>
                 </fieldset>
             </form>
-            <a href="<?php echo $view['router']->generate('plugin_smsgateaway_settings_provider_edit', ['providerId' => $entity->getId()]); ?>" class="btn btn-primary"><i class="fa fa-cog"></i> <?php echo $view['translator']->trans('plugin.smsgateaway.show.provider_show.btn_edit'); ?></a>
-            <form action="<?php echo $view['router']->generate('plugin_smsgateaway_settings_provider_delete', ['providerId' => $entity->getId()]); ?>" method="POST" style="display: inline-block">
-                <button type="submit" class="btn btn-danger"><i class="fa fa-cog"></i> <?php echo $view['translator']->trans('plugin.smsgateaway.show.provider_show.btn_delete'); ?></button>
+            <a href="<?php echo $view['router']->generate('plugin_smsgateway_settings_provider_edit', ['providerId' => $entity->getId()]); ?>" class="btn btn-primary"><i class="fa fa-cog"></i> <?php echo $view['translator']->trans('plugin.smsgateway.show.provider_show.btn_edit'); ?></a>
+            <form action="<?php echo $view['router']->generate('plugin_smsgateway_settings_provider_delete', ['providerId' => $entity->getId()]); ?>" method="POST" style="display: inline-block">
+                <button type="submit" class="btn btn-danger"><i class="fa fa-cog"></i> <?php echo $view['translator']->trans('plugin.smsgateway.show.provider_show.btn_delete'); ?></button>
             </form>
         </div>
     </div>

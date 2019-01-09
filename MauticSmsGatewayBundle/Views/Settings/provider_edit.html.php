@@ -1,5 +1,5 @@
 <?php $view->extend('MauticCoreBundle:Default:content.html.php'); ?>
-<?php $view['slots']->set('headerTitle', $view['translator']->trans('plugin.smsgateaway.edit.provider_edit.title') . ucfirst($entity->getProvider())); ?>
+<?php $view['slots']->set('headerTitle', $view['translator']->trans('plugin.smsgateway.edit.provider_edit.title') . ucfirst($entity->getProvider())); ?>
 <div class="container">
     <div class="row">
         <div class="col-sm-12">

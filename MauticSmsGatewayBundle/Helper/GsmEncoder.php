@@ -1,6 +1,6 @@
 <?php
 
-namespace MauticPlugin\MauticSmsGateawayBundle\Helper;
+namespace MauticPlugin\MauticSmsGatewayBundle\Helper;
 
 /**
  * Class capable of encoding GSM 03.38 default alphabet and packing octets into septets as described by GSM 03.38.

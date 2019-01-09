@@ -1,5 +1,5 @@
 <?php $view->extend('MauticCoreBundle:Default:content.html.php'); ?>
-<?php $view['slots']->set('headerTitle', $view['translator']->trans('plugin.smsgateaway.create.provider_add.title')); ?>
+<?php $view['slots']->set('headerTitle', $view['translator']->trans('plugin.smsgateway.create.provider_add.title')); ?>
 <div class="container">
     <div class="row">
         <div class="col-sm-12">

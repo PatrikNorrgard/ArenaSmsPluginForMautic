@@ -1,15 +1,15 @@
 <?php
 
-namespace MauticPlugin\MauticSmsGateawayBundle\Controller;
+namespace MauticPlugin\MauticSmsGatewayBundle\Controller;
 
 
 use FOS\RestBundle\Util\Codes;
 use Mautic\CoreBundle\Controller\CommonController;
-use MauticPlugin\MauticSmsGateawayBundle\Entity\SmsGateawaySettings;
-use MauticPlugin\MauticSmsGateawayBundle\Entity\SmsGateawayStatus;
-use MauticPlugin\MauticSmsGateawayBundle\Entity\Traits\ApiTrait;
-use MauticPlugin\MauticSmsGateawayBundle\Entity\Interfaces\ApiInterface;
-use MauticPlugin\MauticSmsGateawayBundle\Form\Type\SendSmsType;
+use MauticPlugin\MauticSmsGatewayBundle\Entity\SmsGatewaySettings;
+use MauticPlugin\MauticSmsGatewayBundle\Entity\SmsGatewayStatus;
+use MauticPlugin\MauticSmsGatewayBundle\Entity\Traits\ApiTrait;
+use MauticPlugin\MauticSmsGatewayBundle\Entity\Interfaces\ApiInterface;
+use MauticPlugin\MauticSmsGatewayBundle\Form\Type\SendSmsType;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -21,17 +21,17 @@ class SendController extends CommonController implements ApiInterface
     {
         $userId = $this->getUser()->getId();
         $providers = $this->getDoctrine()
-            ->getRepository(SmsGateawaySettings::class)
+            ->getRepository(SmsGatewaySettings::class)
             ->findBy(['userId' => $userId]);
 
         $form = $this->createForm(SendSmsType::class, null, [
-            'action' => $this->generateUrl('plugin_smsgateaway_send_message_post'),
+            'action' => $this->generateUrl('plugin_smsgateway_send_message_post'),
             'method' => Request::METHOD_POST,
             'userId' => $userId,
         ]);
 
         return $this->delegateView([
-            'contentTemplate' => 'MauticSmsGateawayBundle:Send:index.html.php',
+            'contentTemplate' => 'MauticSmsGatewayBundle:Send:index.html.php',
             'viewParameters' => [
                 'providers' => $providers,
                 'form' => $form->createView(),
@@ -65,7 +65,7 @@ class SendController extends CommonController implements ApiInterface
         }
 
         // Flash message to show that credits on balance is not enough
-        $flashMessage = 'plugin.smsgateaway.flash.send.low_credit';
+        $flashMessage = 'plugin.smsgateway.flash.send.low_credit';
 
         if ($params['provider'] === 'engine') {
             $balance = $provider->getBalance();
@@ -81,19 +81,19 @@ class SendController extends CommonController implements ApiInterface
 
         if ($currentBalance > 0) {
             $response = $this->sendMessage($baseUrl, $credentials, $phones, $params['provider']);
-            $flashMessage = 'plugin.smsgateaway.flash.send.success';
+            $flashMessage = 'plugin.smsgateway.flash.send.success';
             $this->saveData($response, $params['provider'], $currentBalance);
         } elseif ($balance === null && $params['provider'] == 'engine') {
             $response = $this->sendMessage($baseUrl, $credentials, $phones, $params['provider']);
-            $flashMessage = 'plugin.smsgateaway.flash.send.success';
+            $flashMessage = 'plugin.smsgateway.flash.send.success';
             $this->saveData($response, $params['provider'], $currentBalance);
         }
 
         $this->addFlash($flashMessage);
 
         return $this->postActionRedirect([
-            'returnUrl' => $this->generateUrl('plugin_smsgateaway_send_message_get'),
-            'contentTemplate' => 'MauticSmsGateawayBundle:Send:index',
+            'returnUrl' => $this->generateUrl('plugin_smsgateway_send_message_get'),
+            'contentTemplate' => 'MauticSmsGatewayBundle:Send:index',
         ]);
     }
 
@@ -116,7 +116,7 @@ class SendController extends CommonController implements ApiInterface
 
                 // Save Data
                 foreach ($responses as $value) {
-                    $status = new SmsGateawayStatus();
+                    $status = new SmsGatewayStatus();
                     $status->setUserId($this->getUser()->getId());
                     $status->setTicketId($value[1]);
                     $status->setPhone($value['2']);
@@ -143,7 +143,7 @@ class SendController extends CommonController implements ApiInterface
                     // to get field ticket_id on Statuses page. So we will explode'em and
                     // store only the last value. ID contains of UserName.Phone.ID
                     $ticketId = explode('.', $recepient['@id']);
-                    $status = new SmsGateawayStatus();
+                    $status = new SmsGatewayStatus();
                     $status->setUserId($this->getUser()->getId());
                     $status->setTicketId($ticketId[2]);
                     $status->setPhone($recepient['$']);
@@ -155,7 +155,7 @@ class SendController extends CommonController implements ApiInterface
 
                 if (!empty($response['delivery-report']['failed'])) {
                     foreach ($response['delivery-report']['failed'] as $failed) {
-                        $status = new SmsGateawayStatus();
+                        $status = new SmsGatewayStatus();
                         $status = $status->setStatus('failed');
                         $status->setPhone($failed['$']);
                         $status->setDeliveredDate(date('Y-m-d H:i:s'));

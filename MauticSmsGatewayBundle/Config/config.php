@@ -7,97 +7,97 @@ return [
 
 	'routes'   => [
 		'main' => [
-			'plugin_smsgateaway_settings'                 => [
-				'path'       => '/smsgateaway/settings',
-				'controller' => 'MauticSmsGateawayBundle:Settings:index',
+			'plugin_smsgateway_settings'                 => [
+				'path'       => '/smsgateway/settings',
+				'controller' => 'MauticSmsGatewayBundle:Settings:index',
 			],
-			'plugin_smsgateaway_settings_provider_create' => [
-				'path'       => '/smsgateaway/settings/provider/create',
-				'controller' => 'MauticSmsGateawayBundle:Settings:create'
+			'plugin_smsgateway_settings_provider_create' => [
+				'path'       => '/smsgateway/settings/provider/create',
+				'controller' => 'MauticSmsGatewayBundle:Settings:create'
 			],
-			'plugin_smsgateaway_settings_provider_store'  => [
-				'path'       => '/smsgateaway/settings/provider/store',
-				'controller' => 'MauticSmsGateawayBundle:Settings:store',
+			'plugin_smsgateway_settings_provider_store'  => [
+				'path'       => '/smsgateway/settings/provider/store',
+				'controller' => 'MauticSmsGatewayBundle:Settings:store',
 				'method'     => 'POST',
 			],
-			'plugin_smsgateaway_settings_provider_show'   => [
-				'path'         => '/smsgateaway/settings/provider/show/{providerId}',
-				'controller'   => 'MauticSmsGateawayBundle:Settings:show',
+			'plugin_smsgateway_settings_provider_show'   => [
+				'path'         => '/smsgateway/settings/provider/show/{providerId}',
+				'controller'   => 'MauticSmsGatewayBundle:Settings:show',
 				'requirements' => [
 					'providerId' => '\d+',
 				],
 			],
-			'plugin_smsgateaway_settings_provider_edit'   => [
-				'path'         => '/smsgateaway/settings/provider/edit/{providerId}',
-				'controller'   => 'MauticSmsGateawayBundle:Settings:edit',
+			'plugin_smsgateway_settings_provider_edit'   => [
+				'path'         => '/smsgateway/settings/provider/edit/{providerId}',
+				'controller'   => 'MauticSmsGatewayBundle:Settings:edit',
 				'requirements' => [
 					'providerId' => '\d+',
 				],
 			],
-			'plugin_smsgateaway_settings_provider_update' => [
-				'path'         => '/smsgateaway/settings/provider/update/{providerId}',
-				'controller'   => 'MauticSmsGateawayBundle:Settings:update',
+			'plugin_smsgateway_settings_provider_update' => [
+				'path'         => '/smsgateway/settings/provider/update/{providerId}',
+				'controller'   => 'MauticSmsGatewayBundle:Settings:update',
 				'method'       => 'POST',
 				'requirements' => [
 					'providerId' => '\d+',
 				],
 			],
-			'plugin_smsgateaway_settings_provider_delete' => [
-				'path'         => '/smsgateaway/settings/provider/delete/{providerId}',
-				'controller'   => 'MauticSmsGateawayBundle:Settings:delete',
+			'plugin_smsgateway_settings_provider_delete' => [
+				'path'         => '/smsgateway/settings/provider/delete/{providerId}',
+				'controller'   => 'MauticSmsGatewayBundle:Settings:delete',
 				'method'       => 'POST',
 				'requirements' => [
 					'providerId' => '\d+',
 				],
 			],
-			'plugin_smsgateaway_send_message_get'         => [
-				'path'       => '/smsgateaway/send',
-				'controller' => 'MauticSmsGateawayBundle:Send:index',
+			'plugin_smsgateway_send_message_get'         => [
+				'path'       => '/smsgateway/send',
+				'controller' => 'MauticSmsGatewayBundle:Send:index',
 				'method'     => 'GET',
 			],
-			'plugin_smsgateaway_send_message_post'        => [
-				'path'       => '/smsgateaway/send',
-				'controller' => 'MauticSmsGateawayBundle:Send:send',
+			'plugin_smsgateway_send_message_post'        => [
+				'path'       => '/smsgateway/send',
+				'controller' => 'MauticSmsGatewayBundle:Send:send',
 				'method'     => 'POST',
 			],
-			'plugin_smsgateaway_statuses'                 => [
-				'path'       => '/smsgateaway/statuses',
-				'controller' => 'MauticSmsGateawayBundle:Status:index'
+			'plugin_smsgateway_statuses'                 => [
+				'path'       => '/smsgateway/statuses',
+				'controller' => 'MauticSmsGatewayBundle:Status:index'
 			],
-			'plugin_smsgateaway_statuses_update'          => [
-				'path'       => '/smsgateaway/statuses/update',
-				'controller' => 'MauticSmsGateawayBundle:Status:update',
+			'plugin_smsgateway_statuses_update'          => [
+				'path'       => '/smsgateway/statuses/update',
+				'controller' => 'MauticSmsGatewayBundle:Status:update',
 				'method'     => 'POST',
 			],
 		],
 	],
 	'services' => [
 		'forms'        => [
-			'plugin.smsgateaway.form.settings' => [
-				'class' => 'MauticPlugin\MauticSmsGateawayBundle\Form\Type\SettingsType',
-				'alias' => 'smsgateaway.form.settings',
+			'plugin.smsgateway.form.settings' => [
+				'class' => 'MauticPlugin\MauticSmsGatewayBundle\Form\Type\SettingsType',
+				'alias' => 'smsgateway.form.settings',
 			],
-			'plugin.smsgateaway.form.edit'     => [
-				'class' => 'MauticPlugin\MauticSmsGateawayBundle\Form\Type\SettingsEditType',
-				'alias' => 'smsgateaway.form.edit',
+			'plugin.smsgateway.form.edit'     => [
+				'class' => 'MauticPlugin\MauticSmsGatewayBundle\Form\Type\SettingsEditType',
+				'alias' => 'smsgateway.form.edit',
 			],
-			'plugin.smsgateaway.form.send'     => [
-				'class' => 'MauticPlugin\MauticSmsGateawayBundle\Form\Type\SendSmsType',
-				'alias' => 'smsgateaway.form.send',
+			'plugin.smsgateway.form.send'     => [
+				'class' => 'MauticPlugin\MauticSmsGatewayBundle\Form\Type\SendSmsType',
+				'alias' => 'smsgateway.form.send',
 			],
 		],
 		'helpers'      => [
-			'plugin.smsgateaway.helper.gsm_encoder' => [
-				'class' => 'MauticPlugin\MauticSmsGateawayBundle\Helper\GsmEncoder',
+			'plugin.smsgateway.helper.gsm_encoder' => [
+				'class' => 'MauticPlugin\MauticSmsGatewayBundle\Helper\GsmEncoder',
 				'alias' => 'gsmencoder',
 			],
 		],
 		'other'        => [
-			'plugin.smsgateaway.traits.api' => [
-				'class' => \MauticPlugin\MauticSmsGateawayBundle\Entity\Traits\ApiTrait::class,
+			'plugin.smsgateway.traits.api' => [
+				'class' => \MauticPlugin\MauticSmsGatewayBundle\Entity\Traits\ApiTrait::class,
 			],
 			'mautic.sms.transport.arena'    => [
-				'class'        => \MauticPlugin\MauticSmsGateawayBundle\Api\ArenaApi::class,
+				'class'        => \MauticPlugin\MauticSmsGatewayBundle\Api\ArenaApi::class,
 				'arguments'    => [
 					'mautic.page.model.trackable',
 					'mautic.helper.integration',
@@ -112,8 +112,8 @@ return [
 			],
 		],
 		'integrations' => [
-			'plugin.smsgateaway.integration.areana' => [
-				'class' => \MauticPlugin\MauticSmsGateawayBundle\Integration\ArenaIntegration::class,
+			'plugin.smsgateway.integration.areana' => [
+				'class' => \MauticPlugin\MauticSmsGatewayBundle\Integration\ArenaIntegration::class,
 			],
 		],
 	],
@@ -133,9 +133,9 @@ return [
 					],
 					'priority' => 70,
 				],
-				'plugin.smsgateaway.menu.parent'          => [
+				'plugin.smsgateway.menu.parent'          => [
 					'iconClass' => 'fa-envelope',
-					'id'        => 'smsgateaway-menu-parent',
+					'id'        => 'smsgateway-menu-parent',
 					'priority'  => 70,
 					'checks'   => [
 						'integration' => [
@@ -148,28 +148,28 @@ return [
 						],
 					],
 				],
-				'plugin.smsgateaway.menu.settings'        => [
-					'route'  => 'plugin_smsgateaway_settings',
-					'id'     => 'smsgateaway-menu-settings',
+				'plugin.smsgateway.menu.settings'        => [
+					'route'  => 'plugin_smsgateway_settings',
+					'id'     => 'smsgateway-menu-settings',
 					'icon'   => 'fa-cog',
-					'parent' => 'plugin.smsgateaway.menu.parent',
+					'parent' => 'plugin.smsgateway.menu.parent',
 				],
-				'plugin.smsgateaway.menu.provider.create' => [
-					'route'  => 'plugin_smsgateaway_settings_provider_create',
-					'id'     => 'smsgateaway-menu-provider-create',
+				'plugin.smsgateway.menu.provider.create' => [
+					'route'  => 'plugin_smsgateway_settings_provider_create',
+					'id'     => 'smsgateway-menu-provider-create',
 					'icon'   => 'fa-plus',
-					'parent' => 'plugin.smsgateaway.menu.parent',
+					'parent' => 'plugin.smsgateway.menu.parent',
 				],
-				'plugin.smsgateaway.menu.provider.send'   => [
-					'route'  => 'plugin_smsgateaway_send_message_get',
-					'id'     => 'smsgateaway-menu-provider-send',
+				'plugin.smsgateway.menu.provider.send'   => [
+					'route'  => 'plugin_smsgateway_send_message_get',
+					'id'     => 'smsgateway-menu-provider-send',
 					'icon'   => 'fa-paper-plane',
-					'parent' => 'plugin.smsgateaway.menu.parent',
+					'parent' => 'plugin.smsgateway.menu.parent',
 				],
-				'plugin.smsgateaway.menu.statuses'        => [
-					'route'  => 'plugin_smsgateaway_statuses',
-					'id'     => 'smsgateaway-menu-statuses',
-					'parent' => 'plugin.smsgateaway.menu.parent',
+				'plugin.smsgateway.menu.statuses'        => [
+					'route'  => 'plugin_smsgateway_statuses',
+					'id'     => 'smsgateway-menu-statuses',
+					'parent' => 'plugin.smsgateway.menu.parent',
 				],
 			],
 		],

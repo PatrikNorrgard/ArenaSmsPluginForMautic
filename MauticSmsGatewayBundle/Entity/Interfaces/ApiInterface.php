@@ -1,6 +1,6 @@
 <?php
 
-namespace MauticPlugin\MauticSmsGateawayBundle\Entity\Interfaces;
+namespace MauticPlugin\MauticSmsGatewayBundle\Entity\Interfaces;
 
 
 interface ApiInterface

@@ -1,11 +1,11 @@
 <?php
 
-namespace MauticPlugin\MauticSmsGateawayBundle\Entity\Traits;
+namespace MauticPlugin\MauticSmsGatewayBundle\Entity\Traits;
 
 use DOMDocument;
-use MauticPlugin\MauticSmsGateawayBundle\Entity\SmsGateawaySettings as Settings;
-use MauticPlugin\MauticSmsGateawayBundle\Entity\Interfaces\ApiInterface;
-use MauticPlugin\MauticSmsGateawayBundle\Helper\GsmEncoder;
+use MauticPlugin\MauticSmsGatewayBundle\Entity\SmsGatewaySettings as Settings;
+use MauticPlugin\MauticSmsGatewayBundle\Entity\Interfaces\ApiInterface;
+use MauticPlugin\MauticSmsGatewayBundle\Helper\GsmEncoder;
 use SimpleXMLElement;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -22,16 +22,16 @@ trait ApiTrait
     {
         $url = ApiInterface::AIMO_BASE_URL . ApiInterface::AIMO_ACTION_AUTH . http_build_query($credentials);
 
-        if (isset($_SESSION['SMSGATEAWAY']['AIMO']['SESSION']['ID']) && $_SESSION['SMSGATEAWAY']['AIMO']['SESSION']['EXPIRED_AT'] > time()) {
+        if (isset($_SESSION['SMSGATEWAY']['AIMO']['SESSION']['ID']) && $_SESSION['SMSGATEWAY']['AIMO']['SESSION']['EXPIRED_AT'] > time()) {
             return true;
         } else {
             $response = $this->sendRequest($url);
             if ($response) {
                 $responseToArray = explode(':', $response);
 
-                $_SESSION['SMSGATEAWAY']['AIMO']['SESSION']['ID'] = $responseToArray[1];
-                $_SESSION['SMSGATEAWAY']['AIMO']['SESSION']['EXPIRED_AT'] = strtotime("+20 min");
-                $_SESSION['SMSGATEAWAY']['AIMO']['SESSION']['CREATED_AT'] = time();
+                $_SESSION['SMSGATEWAY']['AIMO']['SESSION']['ID'] = $responseToArray[1];
+                $_SESSION['SMSGATEWAY']['AIMO']['SESSION']['EXPIRED_AT'] = strtotime("+20 min");
+                $_SESSION['SMSGATEWAY']['AIMO']['SESSION']['CREATED_AT'] = time();
 
                 return true;
             }
@@ -66,7 +66,7 @@ trait ApiTrait
     {
         $url = $this->getBaseUrl($provider) . ApiInterface::AIMO_ACTION_GETCREDIT;
         if ($this->auth($credentials)) {
-            $url .= 'session_id=' . $_SESSION['SMSGATEAWAY']['AIMO']['SESSION']['ID'];
+            $url .= 'session_id=' . $_SESSION['SMSGATEWAY']['AIMO']['SESSION']['ID'];
             $repsonse = $this->sendRequest($url);
 
             if (!empty($repsonse)) {
@@ -325,7 +325,7 @@ trait ApiTrait
                 $iterator++;
             }
             $params = [
-                'session_id' => $_SESSION['SMSGATEAWAY']['AIMO']['SESSION']['ID'],
+                'session_id' => $_SESSION['SMSGATEWAY']['AIMO']['SESSION']['ID'],
                 'ticket_id' => $ticketIds,
                 'type' => 'api',
             ];

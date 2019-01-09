@@ -6,7 +6,7 @@
  * Time: 11:06
  */
 
-namespace MauticPlugin\MauticSmsGateawayBundle\Form\Type;
+namespace MauticPlugin\MauticSmsGatewayBundle\Form\Type;
 
 use Mautic\CoreBundle\Form\EventListener\CleanFormSubscriber;
 use Mautic\LeadBundle\Entity\Lead;
@@ -28,7 +28,7 @@ class SendSmsType extends AbstractType
             ->add('message', 'textarea',
                 [
                     'mapped' => false,
-                    'label' => 'plugin.smsgateaway.send.index.form.label.message',
+                    'label' => 'plugin.smsgateway.send.index.form.label.message',
                     'label_attr' => ['class' => 'control-label'],
                     'attr' => [
                         'class' => 'form-control',

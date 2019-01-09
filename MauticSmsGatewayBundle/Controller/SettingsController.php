@@ -1,11 +1,11 @@
 <?php
 
-namespace MauticPlugin\MauticSmsGateawayBundle\Controller;
+namespace MauticPlugin\MauticSmsGatewayBundle\Controller;
 
 use Mautic\CoreBundle\Controller\CommonController;
-use MauticPlugin\MauticSmsGateawayBundle\Entity\SmsGateawaySettings as Settings;
-use MauticPlugin\MauticSmsGateawayBundle\Form\Type\SettingsEditType;
-use MauticPlugin\MauticSmsGateawayBundle\Form\Type\SettingsType;
+use MauticPlugin\MauticSmsGatewayBundle\Entity\SmsGatewaySettings as Settings;
+use MauticPlugin\MauticSmsGatewayBundle\Form\Type\SettingsEditType;
+use MauticPlugin\MauticSmsGatewayBundle\Form\Type\SettingsType;
 use Symfony\Component\HttpFoundation\Request;
 
 class SettingsController extends CommonController
@@ -24,7 +24,7 @@ class SettingsController extends CommonController
             ]);
 
         return $this->delegateView([
-            'contentTemplate' => 'MauticSmsGateawayBundle:Settings:index.html.php',
+            'contentTemplate' => 'MauticSmsGatewayBundle:Settings:index.html.php',
             'viewParameters' => [
                 'entities' => $entities,
             ],
@@ -41,12 +41,12 @@ class SettingsController extends CommonController
         $settings->setUserId($userId);
 
         $form = $this->createForm(SettingsType::class, $settings, [
-            'action' => $this->generateUrl('plugin_smsgateaway_settings_provider_store'),
+            'action' => $this->generateUrl('plugin_smsgateway_settings_provider_store'),
             'method' => Request::METHOD_POST,
         ]);
 
         return $this->delegateView([
-            'contentTemplate' => 'MauticSmsGateawayBundle:Settings:provider_add.html.php',
+            'contentTemplate' => 'MauticSmsGatewayBundle:Settings:provider_add.html.php',
             'viewParameters' => [
                 'form' => $form->createView(),
             ],
@@ -68,7 +68,7 @@ class SettingsController extends CommonController
 
         // If user clicked "Cancel"
         if (isset($requestParams['buttons']['cancel'])) {
-            return $this->redirect($this->generateUrl('plugin_smsgateaway_settings'));
+            return $this->redirect($this->generateUrl('plugin_smsgateway_settings'));
         }
 
         // Applying request to entity
@@ -87,18 +87,18 @@ class SettingsController extends CommonController
         $entityManager->persist($entity);
         $entityManager->flush();
 
-        $this->addFlash('plugin.smsgateaway.flash.store.success');
+        $this->addFlash('plugin.smsgateway.flash.store.success');
 
-        $redirectUrl = $this->generateUrl('plugin_smsgateaway_settings');
+        $redirectUrl = $this->generateUrl('plugin_smsgateway_settings');
 
         // If clicked "Apply"
         if (isset($requestParams['buttons']['apply'])) {
-            $redirectUrl = $this->generateUrl('plugin_smsgateaway_settings_provider_create');
+            $redirectUrl = $this->generateUrl('plugin_smsgateway_settings_provider_create');
         }
 
         return $this->postActionRedirect([
             'returnUrl'       => $redirectUrl,
-            'contentTemplate' => 'MauticSmsGateawayBundle:Settings:index',
+            'contentTemplate' => 'MauticSmsGatewayBundle:Settings:index',
         ]);
     }
 
@@ -115,7 +115,7 @@ class SettingsController extends CommonController
             ->find($providerId);
 
         return $this->delegateView([
-            'contentTemplate' => 'MauticSmsGateawayBundle:Settings:provider_show.html.php',
+            'contentTemplate' => 'MauticSmsGatewayBundle:Settings:provider_show.html.php',
             'viewParameters' => [
                 'entity' => $entity,
             ],
@@ -135,14 +135,14 @@ class SettingsController extends CommonController
             ->find($providerId);
 
         $form = $this->createForm(SettingsEditType::class, $entity, [
-            'action' => $this->generateUrl('plugin_smsgateaway_settings_provider_update', [
+            'action' => $this->generateUrl('plugin_smsgateway_settings_provider_update', [
                 'providerId' => $providerId,
             ]),
             'method' => Request::METHOD_POST,
         ]);
 
         return $this->delegateView([
-            'contentTemplate' => 'MauticSmsGateawayBundle:Settings:provider_edit.html.php',
+            'contentTemplate' => 'MauticSmsGatewayBundle:Settings:provider_edit.html.php',
             'viewParameters' => [
                 'entity' => $entity,
                 'form' => $form->createView(),
@@ -164,7 +164,7 @@ class SettingsController extends CommonController
 
         // If user clicked "Cancel"
         if (isset($requestParams['buttons']['cancel'])) {
-            return $this->redirect($this->generateUrl('plugin_smsgateaway_settings'));
+            return $this->redirect($this->generateUrl('plugin_smsgateway_settings'));
         }
 
         $entity = $this->getDoctrine()
@@ -182,18 +182,18 @@ class SettingsController extends CommonController
         $entityManager->persist($entity);
         $entityManager->flush();
 
-        $this->addFlash('plugin.smsgateaway.flash.update.success');
+        $this->addFlash('plugin.smsgateway.flash.update.success');
 
-        $redirectUrl = $this->generateUrl('plugin_smsgateaway_settings');
+        $redirectUrl = $this->generateUrl('plugin_smsgateway_settings');
 
         // If clicked "Apply"
         if (isset($requestParams['buttons']['apply'])) {
-            $redirectUrl = $this->generateUrl('plugin_smsgateaway_settings_provider_create');
+            $redirectUrl = $this->generateUrl('plugin_smsgateway_settings_provider_create');
         }
 
         return $this->postActionRedirect([
             'returnUrl'       => $redirectUrl,
-            'contentTemplate' => 'MauticSmsGateawayBundle:Settings:index',
+            'contentTemplate' => 'MauticSmsGatewayBundle:Settings:index',
         ]);
     }
 
@@ -212,6 +212,6 @@ class SettingsController extends CommonController
         $entityManager->remove($entity);
         $entityManager->flush();
 
-        return $this->redirect($this->generateUrl('plugin_smsgateaway_settings'));
+        return $this->redirect($this->generateUrl('plugin_smsgateway_settings'));
     }
 }

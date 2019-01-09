@@ -1,11 +1,11 @@
 <?php
 
-namespace MauticPlugin\MauticSmsGateawayBundle\Form\Type;
+namespace MauticPlugin\MauticSmsGatewayBundle\Form\Type;
 
 
 use Doctrine\ORM\EntityRepository;
 use Mautic\CoreBundle\Form\EventListener\CleanFormSubscriber;
-use MauticPlugin\MauticSmsGateawayBundle\Entity\SmsGateawayStatus;
+use MauticPlugin\MauticSmsGatewayBundle\Entity\SmsGatewayStatus;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -22,16 +22,16 @@ class UpdateStatusesType extends AbstractType
 
         $builder
             ->add('tickets', EntityType::class, [
-                'class' => 'MauticSmsGateawayBundle:SmsGateawayStatus',
+                'class' => 'MauticSmsGatewayBundle:SmsGatewayStatus',
                 'query_builder' => function (EntityRepository $er) use ($userId) {
                     return $er->createQueryBuilder('c')
                         ->where("c.userId = $userId")
                         ->orderBy('c.id', 'DESC');
                 },
-                'choice_value' => function (SmsGateawayStatus $entity = null) {
+                'choice_value' => function (SmsGatewayStatus $entity = null) {
                     return $entity ? str_replace('+', '',$entity->getTicketId()) : '';
                 },
-                'choice_label' => function (SmsGateawayStatus $entity = null) {
+                'choice_label' => function (SmsGatewayStatus $entity = null) {
                     return $entity ? $entity->getPhone() . '|' . $entity->getTicketId() . '|' . $entity->getStatus() . '|' . $entity->getDeliveredDate()->format('Y-m-d H:i:s') : '';
                 },
                 'multiple' => true,

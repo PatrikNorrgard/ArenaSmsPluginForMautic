@@ -1,9 +1,9 @@
 <?php
 
-namespace MauticPlugin\MauticSmsGateawayBundle\Form\Type;
+namespace MauticPlugin\MauticSmsGatewayBundle\Form\Type;
 
 use Mautic\CoreBundle\Form\EventListener\CleanFormSubscriber;
-use MauticPlugin\MauticSmsGateawayBundle\Entity\Interfaces\ApiInterface;
+use MauticPlugin\MauticSmsGatewayBundle\Entity\Interfaces\ApiInterface;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -17,7 +17,7 @@ class SettingsType extends AbstractType
             ->add('provider', 'choice',
                 [
                     'mapped'     => false,
-                    'label'      => 'plugin.smsgateaway.create.form.field.label.provider',
+                    'label'      => 'plugin.smsgateway.create.form.field.label.provider',
                     'label_attr' => ['class' => 'control-label'],
                     'attr'       => [
                         'class'    => 'form-control',
@@ -27,13 +27,13 @@ class SettingsType extends AbstractType
                         ApiInterface::ENGINE_NAME  => ucfirst(ApiInterface::ENGINE_NAME),
                     ],
                     'required'    => true,
-                    'empty_value' => 'plugin.smsgateaway.create.form.field.option.default',
+                    'empty_value' => 'plugin.smsgateway.create.form.field.option.default',
                 ]
             )
             ->add('username', 'text',
                 [
                     'mapped'     => false,
-                    'label'      => 'plugin.smsgateaway.create.form.field.label.username',
+                    'label'      => 'plugin.smsgateway.create.form.field.label.username',
                     'label_attr' => ['class' => 'control-label'],
                     'attr'       => [
                         'class'    => 'form-control',
@@ -44,7 +44,7 @@ class SettingsType extends AbstractType
             ->add('password', 'password',
                 [
                     'mapped'     => false,
-                    'label'      => 'plugin.smsgateaway.create.form.field.label.password',
+                    'label'      => 'plugin.smsgateway.create.form.field.label.password',
                     'label_attr' => ['class' => 'control-label'],
                     'attr'       => [
                         'class'    => 'form-control',
@@ -55,7 +55,7 @@ class SettingsType extends AbstractType
             ->add('client_id', 'text',
                 [
                     'mapped'     => false,
-                    'label'      => 'plugin.smsgateaway.create.form.field.label.client_id',
+                    'label'      => 'plugin.smsgateway.create.form.field.label.client_id',
                     'label_attr' => ['class' => 'control-label'],
                     'attr'       => [
                         'class'    => 'form-control',
@@ -66,7 +66,7 @@ class SettingsType extends AbstractType
             ->add('callback_url', 'text',
                 [
                     'mapped'     => false,
-                    'label'      => 'plugin.smsgateaway.create.form.field.label.callback_url',
+                    'label'      => 'plugin.smsgateway.create.form.field.label.callback_url',
                     'label_attr' => ['class' => 'control-label'],
                     'attr'       => [
                         'class'    => 'form-control',
@@ -77,7 +77,7 @@ class SettingsType extends AbstractType
             ->add('sender', 'text',
                 [
                     'mapped'     => false,
-                    'label'      => 'plugin.smsgateaway.create.form.field.label.sender',
+                    'label'      => 'plugin.smsgateway.create.form.field.label.sender',
                     'label_attr' => ['class' => 'control-label'],
                     'attr'       => [
                         'class'    => 'form-control',
@@ -89,7 +89,7 @@ class SettingsType extends AbstractType
             ->add('default_provider', ChoiceType::class,
                 [
                     'mapped' => false,
-                    'label' => 'plugin.smsgateaway.create.form.field.label.default',
+                    'label' => 'plugin.smsgateway.create.form.field.label.default',
                     'label_attr' => ['class' => 'control-label'],
                     'attr'       => [
                         'class'    => 'form-control',
