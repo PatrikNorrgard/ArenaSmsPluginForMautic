@@ -11,6 +11,7 @@ use \Mautic\SmsBundle\Api\AbstractSmsApi;
 use MauticPlugin\MauticSmsGatewayBundle\Entity\Interfaces\ApiInterface;
 use MauticPlugin\MauticSmsGatewayBundle\Entity\Traits\ApiTrait;
 use Monolog\Logger;
+use Mautic\LeadBundle\Entity\Lead;
 
 class ArenaApi extends AbstractSmsApi {
 	use ApiTrait;
@@ -43,14 +44,14 @@ class ArenaApi extends AbstractSmsApi {
 	}
 
 	/**
-	 * @param string $number
+	 * @param Lead $number
 	 * @param string $content
 	 *
 	 * @return mixed|void
 	 * @throws \Exception
 	 */
-	public function sendSms( $number, $content ) {
-		$this->params['phones'][] = $number;
+	public function sendSms( Lead $number, $content ) {
+		$this->params['phones'][] = $number->getMobile();
 		$this->params['messages'] = $content;
 		// Getting provider entity
 		/** @var SmsGatewaySettings $provider */
