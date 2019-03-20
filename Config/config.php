@@ -112,7 +112,7 @@ return [
 			],
 		],
 		'integrations' => [
-			'plugin.smsgateway.integration.areana' => [
+			'plugin.smsgateway.integration.arena' => [
 				'class' => \MauticPlugin\MauticSmsGatewayBundle\Integration\ArenaIntegration::class,
 			],
 		],
@@ -145,36 +145,36 @@ return [
 						],
 						'parameters' => [
 							'sms_transport' => 'mautic.sms.transport.arena',
+							'arena_smsgateway_enabled' => true,
 						],
 					],
-				],
-				'plugin.smsgateway.menu.settings'        => [
-					'route'  => 'plugin_smsgateway_settings',
-					'id'     => 'smsgateway-menu-settings',
-					'icon'   => 'fa-cog',
-					'parent' => 'plugin.smsgateway.menu.parent',
-				],
-				'plugin.smsgateway.menu.provider.create' => [
-					'route'  => 'plugin_smsgateway_settings_provider_create',
-					'id'     => 'smsgateway-menu-provider-create',
-					'icon'   => 'fa-plus',
-					'parent' => 'plugin.smsgateway.menu.parent',
-				],
-				'plugin.smsgateway.menu.provider.send'   => [
-					'route'  => 'plugin_smsgateway_send_message_get',
-					'id'     => 'smsgateway-menu-provider-send',
-					'icon'   => 'fa-paper-plane',
-					'parent' => 'plugin.smsgateway.menu.parent',
-				],
-				'plugin.smsgateway.menu.statuses'        => [
-					'route'  => 'plugin_smsgateway_statuses',
-					'id'     => 'smsgateway-menu-statuses',
-					'parent' => 'plugin.smsgateway.menu.parent',
+					'children' => [
+						'plugin.smsgateway.menu.settings'        => [
+							'route'  => 'plugin_smsgateway_settings',
+							'id'     => 'smsgateway-menu-settings',
+							'icon'   => 'fa-cog',
+						],
+						'plugin.smsgateway.menu.provider.create' => [
+							'route'  => 'plugin_smsgateway_settings_provider_create',
+							'id'     => 'smsgateway-menu-provider-create',
+							'icon'   => 'fa-plus',
+						],
+						'plugin.smsgateway.menu.provider.send'   => [
+							'route'  => 'plugin_smsgateway_send_message_get',
+							'id'     => 'smsgateway-menu-provider-send',
+							'icon'   => 'fa-paper-plane',
+						],
+						'plugin.smsgateway.menu.statuses'        => [
+							'route'  => 'plugin_smsgateway_statuses',
+							'id'     => 'smsgateway-menu-statuses',
+						],
+					],
 				],
 			],
 		],
 	],
 	'parameters' => [
 		'sms_transport' => 'mautic.sms.transport.arena',
+		'arena_smsgateway_enabled' => true,
 	],
 ];
