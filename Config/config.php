@@ -175,6 +175,6 @@ return [
 	],
 	'parameters' => [
 		'sms_transport' => 'mautic.sms.transport.arena',
-		'arena_smsgateway_enabled' => true,
+		'arena_smsgateway_enabled' => false,
 	],
 ];
