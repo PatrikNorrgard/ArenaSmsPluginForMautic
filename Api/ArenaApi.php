@@ -44,14 +44,14 @@ class ArenaApi extends AbstractSmsApi {
 	}
 
 	/**
-	 * @param Lead $number
+	 * @param Lead $lead
 	 * @param string $content
 	 *
 	 * @return mixed|void
 	 * @throws \Exception
 	 */
-	public function sendSms( Lead $number, $content ) {
-		$this->params['phones'][] = $number->getMobile();
+	public function sendSms( Lead $lead, $content ) {
+		$this->params['phones'][] = $lead->getMobile();
 		$this->params['messages'] = $content;
 		// Getting provider entity
 		/** @var SmsGatewaySettings $provider */
