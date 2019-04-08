@@ -18,3 +18,7 @@ and enable(publish) plugin in plugin configuration.
 5. Press `Install\Upgrade Plugins` button and wait until completetion.  
 6. Choose Arena plugin.  
 7. In `Enable\Auth` tab set `Published` to YES.
+
+#### To work with plugin and see menu item "Arena SMS gateway"
+
+go to `Configuration` > `Text Message Settings` and select `Arena SMS gateway` 
