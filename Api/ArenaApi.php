@@ -153,10 +153,4 @@ class ArenaApi extends AbstractSmsApi {
 				break;
 		}
 	}
-
-	public function writeToFile( $message, $data ) {
-		$file = __DIR__ . '/../../../app/logs/arenaapi.log';
-		$data = "[" . date( 'H:i:s d-m-Y' ) . "] $message: " . json_encode( $data ) . PHP_EOL;
-		file_put_contents( $file, $data, FILE_APPEND );
-	}
 }
