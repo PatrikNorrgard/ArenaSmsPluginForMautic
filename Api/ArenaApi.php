@@ -126,7 +126,7 @@ class ArenaApi extends AbstractSmsApi {
 					'pass'      => $provider->getPassword(),
 					'text'      => $text,
 				];
-				$this->writeToFile( 'SMS Content', $credentials['text'] );
+				$this->logger->debug( 'SMS Content', $credentials['text'] );
 				break;
 			case ApiInterface::ENGINE_NAME:
 				$credentials = [
@@ -136,7 +136,7 @@ class ArenaApi extends AbstractSmsApi {
 					'password' => $provider->getPassword(),
 					'msg'      => $text,
 				];
-				$this->writeToFile( 'SMS Content', $credentials['msg'] );
+				$this->logger->debug( 'SMS Content', $credentials['msg'] );
 				break;
 		}
 
@@ -152,11 +152,5 @@ class ArenaApi extends AbstractSmsApi {
 				return $provider->getCallbackUrl() . '?';
 				break;
 		}
-	}
-
-	public function writeToFile( $message, $data ) {
-		$file = __DIR__ . '/../../../app/logs/arenaapi.log';
-		$data = "[" . date( 'H:i:s d-m-Y' ) . "] $message: " . json_encode( $data ) . PHP_EOL;
-		file_put_contents( $file, $data, FILE_APPEND );
 	}
 }
