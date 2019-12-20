@@ -1,0 +1,10 @@
+{
+    "name": "mautic-sms-gateway-bundle",
+    "type": "mautic-plugin",
+    "extra": {
+        "install-directory-name": "MauticSmsGatewayBundle"
+    },
+	"require": {
+		"mautic/composer-plugin": "*"
+	}
+}
